@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | SkillSwap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-exchange-alt logo-icon"></i>
+                Skill<span>Swap</span>
+            </a>
+            <nav id="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="auctions.html">Live Auctions</a></li>
+                    <li><a href="post-gig.html">Post a Gig</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button id="connect-wallet-btn" class="btn-connect">Connect Wallet</button>
+            <button id="disconnect-wallet-btn" class="btn-disconnect" style="display: none;">Disconnect</button>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Blog Section -->
+    <section class="blog">
+        <div class="container">
+            <h2 class="section-title animate">SkillSwap Blog</h2>
+            <p class="animate animate-delay-1" style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">Stay updated with the latest news, tips, and insights about freelancing, blockchain technology, and the future of work.</p>
+            
+            <div class="blog-grid">
+                <div class="blog-card animate animate-delay-1">
+                    <div class="blog-image">
+                        <img src="assets/images/auction1.jpg" alt="Blog Post">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category">Blockchain</span>
+                        <h3 class="blog-title">How Blockchain is Revolutionizing Freelancing</h3>
+                        <p class="blog-excerpt">Discover how blockchain technology is transforming the freelance industry by providing secure, transparent, and efficient ways to connect talent with clients.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="blog-author-avatar">
+                                    <img src="assets/images/avatar1.jpg" alt="Author Avatar">
+                                </div>
+                                <span>Chioma Okonkwo</span>
+                            </div>
+                            <div class="blog-date">May 10, 2025</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="blog-card animate animate-delay-2">
+                    <div class="blog-image">
+                        <img src="assets/images/auction2.jpg" alt="Blog Post">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category">Tips</span>
+                        <h3 class="blog-title">10 Tips for Winning More Skill Auctions</h3>
+                        <p class="blog-excerpt">Learn the strategies and tactics that will help you stand out in skill auctions and win more projects on decentralized freelance platforms.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="blog-author-avatar">
+                                    <img src="assets/images/avatar2.jpg" alt="Author Avatar">
+                                </div>
+                                <span>David Chen</span>
+                            </div>
+                            <div class="blog-date">May 5, 2025</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="blog-card animate animate-delay-3">
+                    <div class="blog-image">
+                        <img src="assets/images/auction3.jpg" alt="Blog Post">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category">Guide</span>
+                        <h3 class="blog-title">The Complete Guide to Smart Contracts for Freelancers</h3>
+                        <p class="blog-excerpt">Everything you need to know about smart contracts and how they can protect both freelancers and clients in the digital economy.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="blog-author-avatar">
+                                    <img src="assets/images/avatar3.jpg" alt="Author Avatar">
+                                </div>
+                                <span>Oluwaseun Adeyemi</span>
+                            </div>
+                            <div class="blog-date">April 28, 2025</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="blog-card animate animate-delay-4">
+                    <div class="blog-image">
+                        <img src="assets/images/auction4.jpg" alt="Blog Post">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category">News</span>
+                        <h3 class="blog-title">SkillSwap Launches New Features for Enhanced User Experience</h3>
+                        <p class="blog-excerpt">Explore the latest features and improvements that make SkillSwap the leading decentralized marketplace for freelance services.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="blog-author-avatar">
+                                    <img src="assets/images/avatar4.jpg" alt="Author Avatar">
+                                </div>
+                                <span>James Wilson</span>
+                            </div>
+                            <div class="blog-date">April 20, 2025</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="blog-card animate animate-delay-5">
+                    <div class="blog-image">
+                        <img src="assets/images/auction1.jpg" alt="Blog Post">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category">Tutorial</span>
+                        <h3 class="blog-title">How to Create Your First Skill Auction</h3>
+                        <p class="blog-excerpt">A step-by-step guide to creating your first skill auction on SkillSwap and attracting the right bidders for your services.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="blog-author-avatar">
+                                    <img src="assets/images/avatar1.jpg" alt="Author Avatar">
+                                </div>
+                                <span>Adebayo Ogunlesi</span>
+                            </div>
+                            <div class="blog-date">April 15, 2025</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="blog-card animate animate-delay-6">
+                    <div class="blog-image">
+                        <img src="assets/images/auction2.jpg" alt="Blog Post">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category">Insights</span>
+                        <h3 class="blog-title">The Future of Work: Decentralized Talent Marketplaces</h3>
+                        <p class="blog-excerpt">An in-depth look at how decentralized talent marketplaces are reshaping the future of work and creating new opportunities for freelancers.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="blog-author-avatar">
+                                    <img src="assets/images/avatar2.jpg" alt="Author Avatar">
+                                </div>
+                                <span>Sarah Johnson</span>
+                            </div>
+                            <div class="blog-date">April 8, 2025</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination" style="display: flex; justify-content: center; margin-top: 3rem; gap: 0.5rem;">
+                <button class="btn btn-secondary" style="padding: 0.5rem 1rem;">
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <div style="display: flex; gap: 0.5rem;">
+                    <button class="btn btn-primary" style="padding: 0.5rem 1rem;">1</button>
+                    <button class="btn btn-secondary" style="padding: 0.5rem 1rem;">2</button>
+                    <button class="btn btn-secondary" style="padding: 0.5rem 1rem;">3</button>
+                </div>
+                <button class="btn btn-secondary" style="padding: 0.5rem 1rem;">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div>
+                    <div class="footer-logo">SkillSwap</div>
+                    <p class="footer-description">A decentralized marketplace for freelance services where users can bid on skills they need.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/skillswap" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://twitter.com/skillswap" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com/company/skillswap" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="auctions.html">Live Auctions</a></li>
+                        <li><a href="post-gig.html">Post a Gig</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@skillswap.com">info@skillswap.com</a></li>
+                        <li><a href="tel:+2348061538332">+234 806 153 8332</a></li>
+                        <li><a href="https://explorer.lisk.com/contract/LISK_DEPLOYED_CONTRACT_ADDRESS" target="_blank">Smart Contract</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Best Nwachinemere. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Wallet Modal -->
+    <div class="modal" id="wallet-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Connect Wallet</h3>
+                <button class="modal-close" id="wallet-modal-close">&times;</button>
+            </div>
+            <p>Choose a wallet to connect to SkillSwap:</p>
+            <div class="wallet-options">
+                <div class="wallet-option" data-wallet="lisk">
+                    <img src="assets/images/lisk.png" alt="LISK Wallet" class="wallet-icon">
+                    <span class="wallet-name">LISK Wallet</span>
+                </div>
+                <div class="wallet-option" data-wallet="metamask">
+                    <img src="assets/images/metamask.png" alt="MetaMask" class="wallet-icon">
+                    <span class="wallet-name">MetaMask</span>
+                </div>
+                <div class="wallet-option" data-wallet="walletconnect">
+                    <img src="assets/images/walletconnect.png" alt="WalletConnect" class="wallet-icon">
+                    <span class="wallet-name">WalletConnect</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <div class="notification-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="notification-message">
+            <div class="notification-title">Success!</div>
+            <div class="notification-description">Your action was completed successfully.</div>
+        </div>
+        <button class="notification-close" id="notification-close">&times;</button>
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle" id="dark-mode-toggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/web3.js"></script>
+    <script src="js/contract.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

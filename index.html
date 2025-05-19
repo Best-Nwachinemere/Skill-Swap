@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap | Bid on Skills. Win Time.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-exchange-alt logo-icon"></i>
+                Skill<span>Swap</span>
+            </a>
+            <nav id="nav">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="auctions.html">Live Auctions</a></li>
+                    <li><a href="post-gig.html">Post a Gig</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button id="connect-wallet-btn" class="btn-connect">Connect Wallet</button>
+            <button id="disconnect-wallet-btn" class="btn-disconnect" style="display: none;">Disconnect</button>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text animate">
+                <h1 class="hero-title">Bid on Skills.<br>Win Time.</h1>
+                <p class="hero-subtitle">SkillSwap is a decentralized marketplace where you can bid on short-term freelance services and win the skills you need.</p>
+                <div class="hero-buttons">
+                    <a href="auctions.html" class="btn btn-primary">Explore Auctions</a>
+                    <a href="post-gig.html" class="btn btn-secondary">Post a Gig</a>
+                </div>
+            </div>
+            <div class="hero-image animate animate-delay-2">
+                <img src="assets/images/hero.jpg" alt="SkillSwap Platform">
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Auctions Section -->
+    <section class="auctions">
+        <div class="container">
+            <h2 class="section-title animate">Live Auctions</h2>
+            <div class="auctions-grid" id="auctions-grid">
+                <!-- Auctions will be loaded dynamically -->
+            </div>
+            <div class="text-center" style="margin-top: 2rem; text-align: center;">
+                <a href="auctions.html" class="btn btn-primary">View All Auctions</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title animate">How It Works</h2>
+            <div class="steps">
+                <div class="step-card animate animate-delay-1">
+                    <div class="step-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h3 class="step-title">Connect Wallet</h3>
+                    <p class="step-description">Connect your Ethereum wallet to get started with SkillSwap.</p>
+                </div>
+                <div class="step-card animate animate-delay-2">
+                    <div class="step-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <h3 class="step-title">Bid on Skills</h3>
+                    <p class="step-description">Browse live auctions and place bids on skills you need.</p>
+                </div>
+                <div class="step-card animate animate-delay-3">
+                    <div class="step-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="step-title">Win & Receive</h3>
+                    <p class="step-description">Win auctions and receive services directly from skilled professionals.</p>
+                </div>
+                <div class="step-card animate animate-delay-4">
+                    <div class="step-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3 class="step-title">Sell Your Skills</h3>
+                    <p class="step-description">Create your own auctions and earn by offering your expertise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Sellers Section -->
+    <section class="featured-sellers">
+        <div class="container">
+            <h2 class="section-title animate">Featured Sellers</h2>
+            <div class="sellers-grid">
+                <div class="seller-card animate animate-delay-1">
+                    <div class="seller-cover"></div>
+                    <div class="seller-avatar">
+                        <img src="assets/images/avatar1.jpg" alt="Seller Avatar">
+                    </div>
+                    <div class="seller-content">
+                        <h3 class="seller-name">Emma Johnson</h3>
+                        <p class="seller-skills">UI/UX Designer</p>
+                        <div class="seller-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="seller-stats">
+                            <div class="stat">
+                                <div class="stat-value">42</div>
+                                <div class="stat-label">Gigs</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">4.8</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">98%</div>
+                                <div class="stat-label">Completion</div>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-secondary" style="width: 100%;">View Profile</a>
+                    </div>
+                </div>
+                <div class="seller-card animate animate-delay-2">
+                    <div class="seller-cover"></div>
+                    <div class="seller-avatar">
+                        <img src="assets/images/avatar2.jpg" alt="Seller Avatar">
+                    </div>
+                    <div class="seller-content">
+                        <h3 class="seller-name">David Chen</h3>
+                        <p class="seller-skills">Full Stack Developer</p>
+                        <div class="seller-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="seller-stats">
+                            <div class="stat">
+                                <div class="stat-value">67</div>
+                                <div class="stat-label">Gigs</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">5.0</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">100%</div>
+                                <div class="stat-label">Completion</div>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-secondary" style="width: 100%;">View Profile</a>
+                    </div>
+                </div>
+                <div class="seller-card animate animate-delay-3">
+                    <div class="seller-cover"></div>
+                    <div class="seller-avatar">
+                        <img src="assets/images/avatar3.jpg" alt="Seller Avatar">
+                    </div>
+                    <div class="seller-content">
+                        <h3 class="seller-name">Sophia Martinez</h3>
+                        <p class="seller-skills">Content Writer</p>
+                        <div class="seller-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="seller-stats">
+                            <div class="stat">
+                                <div class="stat-value">38</div>
+                                <div class="stat-label">Gigs</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">4.2</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">95%</div>
+                                <div class="stat-label">Completion</div>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-secondary" style="width: 100%;">View Profile</a>
+                    </div>
+                </div>
+                <div class="seller-card animate animate-delay-4">
+                    <div class="seller-cover"></div>
+                    <div class="seller-avatar">
+                        <img src="assets/images/avatar4.jpg" alt="Seller Avatar">
+                    </div>
+                    <div class="seller-content">
+                        <h3 class="seller-name">James Wilson</h3>
+                        <p class="seller-skills">Digital Marketer</p>
+                        <div class="seller-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="seller-stats">
+                            <div class="stat">
+                                <div class="stat-value">51</div>
+                                <div class="stat-label">Gigs</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">4.7</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">97%</div>
+                                <div class="stat-label">Completion</div>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-secondary" style="width: 100%;">View Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2 class="section-title animate">Stay Updated</h2>
+            <p class="animate animate-delay-1">Subscribe to our newsletter to get the latest updates on new skills and features.</p>
+            <form class="newsletter-form animate animate-delay-2">
+                <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div>
+                    <div class="footer-logo">SkillSwap</div>
+                    <p class="footer-description">A decentralized marketplace for freelance services where users can bid on skills they need.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/skillswap" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://twitter.com/skillswap" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com/company/skillswap" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="auctions.html">Live Auctions</a></li>
+                        <li><a href="post-gig.html">Post a Gig</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@skillswap.com">info@skillswap.com</a></li>
+                        <li><a href="tel:+2348061538332">+234 806 153 8332</a></li>
+                        <li><a href="https://explorer.lisk.com/contract/LISK_DEPLOYED_CONTRACT_ADDRESS" target="_blank">Smart Contract</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 SkillSwap. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Wallet Modal -->
+    <div class="modal" id="wallet-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Connect Wallet</h3>
+                <button class="modal-close" id="wallet-modal-close">&times;</button>
+            </div>
+            <p>Choose a wallet to connect to SkillSwap:</p>
+            <div class="wallet-options">
+                <div class="wallet-option" data-wallet="lisk">
+                    <img src="assets/images/lisk.png" alt="LISK Wallet" class="wallet-icon">
+                    <span class="wallet-name">LISK Wallet</span>
+                </div>
+                <div class="wallet-option" data-wallet="metamask">
+                    <img src="assets/images/metamask.png" alt="MetaMask" class="wallet-icon">
+                    <span class="wallet-name">MetaMask</span>
+                </div>
+                <div class="wallet-option" data-wallet="walletconnect">
+                    <img src="assets/images/walletconnect.png" alt="WalletConnect" class="wallet-icon">
+                    <span class="wallet-name">WalletConnect</span>
+                </div>
+            </div>
+            <div style="margin-top: 20px; text-align: center; color: var(--text-light); font-size: 0.9rem;">
+                <p>Note: This is a demo version. Wallet connections are simulated.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <div class="notification-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="notification-message">
+            <div class="notification-title">Success!</div>
+            <div class="notification-description">Your action was completed successfully.</div>
+        </div>
+        <button class="notification-close" id="notification-close">&times;</button>
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle" id="dark-mode-toggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/web3.js"></script>
+    <script src="js/contract.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

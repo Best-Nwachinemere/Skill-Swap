@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Auctions | SkillSwap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-exchange-alt logo-icon"></i>
+                Skill<span>Swap</span>
+            </a>
+            <nav id="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="auctions.html" class="active">Live Auctions</a></li>
+                    <li><a href="post-gig.html">Post a Gig</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button id="connect-wallet-btn" class="btn-connect">Connect Wallet</button>
+            <button id="disconnect-wallet-btn" class="btn-disconnect" style="display: none;">Disconnect</button>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Auctions Section -->
+    <section class="auctions" style="padding-top: 10rem;">
+        <div class="container">
+            <h2 class="section-title animate">Live Auctions</h2>
+            
+            <!-- Filters -->
+            <div class="filters animate animate-delay-1" style="display: flex; justify-content: space-between; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+                <div class="filter-group" style="display: flex; gap: 1rem; align-items: center;">
+                    <label for="category-filter">Category:</label>
+                    <select id="category-filter" class="form-select" style="width: auto; padding: 0.5rem 1rem;">
+                        <option value="all">All Categories</option>
+                        <option value="design">Design</option>
+                        <option value="development">Development</option>
+                        <option value="writing">Writing</option>
+                        <option value="marketing">Marketing</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group" style="display: flex; gap: 1rem; align-items: center;">
+                    <label for="sort-filter">Sort By:</label>
+                    <select id="sort-filter" class="form-select" style="width: auto; padding: 0.5rem 1rem;">
+                        <option value="ending-soon">Ending Soon</option>
+                        <option value="newest">Newest</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                    </select>
+                </div>
+                
+                <div class="search-group" style="flex: 1; min-width: 250px;">
+                    <input type="text" id="search-filter" class="form-input" placeholder="Search auctions..." style="padding: 0.5rem 1rem;">
+                </div>
+            </div>
+            
+            <!-- Auctions Grid -->
+            <div class="auctions-grid" id="auctions-grid">
+                <!-- Auctions will be loaded dynamically -->
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination" style="display: flex; justify-content: center; margin-top: 3rem; gap: 0.5rem;">
+                <button class="btn btn-secondary" id="prev-page" style="padding: 0.5rem 1rem;">
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <div id="page-numbers" style="display: flex; gap: 0.5rem;">
+                    <button class="btn btn-primary" style="padding: 0.5rem 1rem;">1</button>
+                    <button class="btn btn-secondary" style="padding: 0.5rem 1rem;">2</button>
+                    <button class="btn btn-secondary" style="padding: 0.5rem 1rem;">3</button>
+                </div>
+                <button class="btn btn-secondary" id="next-page" style="padding: 0.5rem 1rem;">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div>
+                    <div class="footer-logo">SkillSwap</div>
+                    <p class="footer-description">A decentralized marketplace for freelance services where users can bid on skills they need.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/skillswap" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://twitter.com/skillswap" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com/company/skillswap" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="auctions.html">Live Auctions</a></li>
+                        <li><a href="post-gig.html">Post a Gig</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@skillswap.com">info@skillswap.com</a></li>
+                        <li><a href="tel:+2348061538332">+234 806 153 8332</a></li>
+                        <li><a href="https://explorer.lisk.com/contract/LISK_DEPLOYED_CONTRACT_ADDRESS" target="_blank">Smart Contract</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Best Nwachinemere. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Wallet Modal -->
+    <div class="modal" id="wallet-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Connect Wallet</h3>
+                <button class="modal-close" id="wallet-modal-close">&times;</button>
+            </div>
+            <p>Choose a wallet to connect to SkillSwap:</p>
+            <div class="wallet-options">
+                <div class="wallet-option" data-wallet="lisk">
+                    <img src="assets/images/lisk.png" alt="LISK Wallet" class="wallet-icon">
+                    <span class="wallet-name">LISK Wallet</span>
+                </div>
+                <div class="wallet-option" data-wallet="metamask">
+                    <img src="assets/images/metamask.png" alt="MetaMask" class="wallet-icon">
+                    <span class="wallet-name">MetaMask</span>
+                </div>
+                <div class="wallet-option" data-wallet="walletconnect">
+                    <img src="assets/images/walletconnect.png" alt="WalletConnect" class="wallet-icon">
+                    <span class="wallet-name">WalletConnect</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <div class="notification-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="notification-message">
+            <div class="notification-title">Success!</div>
+            <div class="notification-description">Your action was completed successfully.</div>
+        </div>
+        <button class="notification-close" id="notification-close">&times;</button>
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle" id="dark-mode-toggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/web3.js"></script>
+    <script src="js/contract.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

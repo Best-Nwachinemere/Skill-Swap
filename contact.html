@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | SkillSwap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-exchange-alt logo-icon"></i>
+                Skill<span>Swap</span>
+            </a>
+            <nav id="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="auctions.html">Live Auctions</a></li>
+                    <li><a href="post-gig.html">Post a Gig</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+            <button id="connect-wallet-btn" class="btn-connect">Connect Wallet</button>
+            <button id="disconnect-wallet-btn" class="btn-disconnect" style="display: none;">Disconnect</button>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title animate">Contact Us</h2>
+            <p class="animate animate-delay-1" style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">Have questions or feedback? We'd love to hear from you. Reach out to our team using the contact information below or fill out the form.</p>
+            
+            <div class="contact-container">
+                <div class="contact-info animate animate-delay-1">
+                    <h3 style="color: white; margin-bottom: 2rem;">Get In Touch</h3>
+                    
+                    
+                    <!-- Update contact information -->
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h4>Our Location</h4>
+                            <p>FTLD Office, Uyo, Akwa Ibom State, Nigeria</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h4>Email Us</h4>
+                            <p>info@skillswap.com</p>
+                            <p>support@skillswap.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h4>Call Us</h4>
+                            <p>+234 806 153 8332</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h4>Working Hours</h4>
+                            <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
+                            <p>Saturday - Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form animate animate-delay-2">
+                    <h3 style="margin-bottom: 1.5rem;">Send Us a Message</h3>
+                    
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" id="name" class="form-input" placeholder="Enter your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Your Email</label>
+                            <input type="email" id="email" class="form-input" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" id="subject" class="form-input" placeholder="Enter subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" class="form-textarea" placeholder="Enter your message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Map -->
+            <div class="map animate animate-delay-3" style="margin-top: 4rem; height: 400px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px var(--shadow);">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.3059445135!2d-74.25986548248684!3d40.69714941932609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1620293533561!5m2!1sen!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div>
+                    <div class="footer-logo">SkillSwap</div>
+                    <p class="footer-description">A decentralized marketplace for freelance services where users can bid on skills they need.</p>
+                    <!-- Update footer social links -->
+                    <div class="social-links">
+                        <a href="https://github.com/skillswap" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://twitter.com/skillswap" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com/company/skillswap" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="auctions.html">Live Auctions</a></li>
+                        <li><a href="post-gig.html">Post a Gig</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <!-- Update contact information in footer -->
+                <div>
+                    <h4 class="footer-title">Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@skillswap.com">info@skillswap.com</a></li>
+                        <li><a href="tel:+2348061538332">+234 806 153 8332</a></li>
+                        <li><a href="https://explorer.lisk.com/contract/LISK_DEPLOYED_CONTRACT_ADDRESS" target="_blank">Smart Contract</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Best Nwachinemere. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Wallet Modal -->
+    <div class="modal" id="wallet-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Connect Wallet</h3>
+                <button class="modal-close" id="wallet-modal-close">&times;</button>
+            </div>
+            <p>Choose a wallet to connect to SkillSwap:</p>
+            <div class="wallet-options">
+                <div class="wallet-option" data-wallet="metamask">
+                    <img src="assets/images/metamask.png" alt="MetaMask" class="wallet-icon">
+                    <span class="wallet-name">MetaMask</span>
+                </div>
+                <div class="wallet-option" data-wallet="walletconnect">
+                    <img src="assets/images/walletconnect.png" alt="WalletConnect" class="wallet-icon">
+                    <span class="wallet-name">WalletConnect</span>
+                </div>
+                <div class="wallet-option" data-wallet="coinbase">
+                    <img src="assets/images/coinbase.png" alt="Coinbase Wallet" class="wallet-icon">
+                    <span class="wallet-name">Coinbase</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <div class="notification-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="notification-message">
+            <div class="notification-title">Success!</div>
+            <div class="notification-description">Your action was completed successfully.</div>
+        </div>
+        <button class="notification-close" id="notification-close">&times;</button>
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle" id="dark-mode-toggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/web3.js"></script>
+    <script src="js/contract.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Contact Form Handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contact-form');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // In a real application, you would send this data to your server
+                    console.log('Contact Form Submission:', { name, email, subject, message });
+                    
+                    // Show success notification
+                    window.utils.showNotification(
+                        'success',
+                        'Message Sent',
+                        'Your message has been sent successfully. We will get back to you soon!'
+                    );
+                    
+                    // Reset form
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

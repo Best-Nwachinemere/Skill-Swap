@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Gig | SkillSwap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-exchange-alt logo-icon"></i>
+                Skill<span>Swap</span>
+            </a>
+            <nav id="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="auctions.html">Live Auctions</a></li>
+                    <li><a href="post-gig.html" class="active">Post a Gig</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button id="connect-wallet-btn" class="btn-connect">Connect Wallet</button>
+            <button id="disconnect-wallet-btn" class="btn-disconnect" style="display: none;">Disconnect</button>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Post a Gig Section -->
+    <section class="post-gig">
+        <div class="container">
+            <h2 class="section-title animate">Post a Gig</h2>
+            <div class="form-container animate animate-delay-1">
+                <form id="post-gig-form">
+                    <div class="form-group">
+                        <label for="gig-title" class="form-label">Gig Title</label>
+                        <input type="text" id="gig-title" class="form-input" placeholder="e.g. Professional Logo Design" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gig-description" class="form-label">Gig Description</label>
+                        <textarea id="gig-description" class="form-textarea" placeholder="Describe the service you're offering in detail..." required></textarea>
+                        <div class="form-note">Be specific about what you'll deliver, your expertise, and why buyers should choose you.</div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="gig-category" class="form-label">Category</label>
+                            <select id="gig-category" class="form-select" required>
+                                <option value="">Select a category</option>
+                                <option value="Design">Design</option>
+                                <option value="Development">Development</option>
+                                <option value="Writing">Writing</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Video">Video & Animation</option>
+                                <option value="Music">Music & Audio</option>
+                                <option value="Business">Business</option>
+                                <option value="Lifestyle">Lifestyle</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="gig-duration" class="form-label">Auction Duration</label>
+                            <select id="gig-duration" class="form-select" required>
+                                <option value="">Select duration</option>
+                                <option value="86400">1 Day</option>
+                                <option value="172800">2 Days</option>
+                                <option value="259200">3 Days</option>
+                                <option value="604800">7 Days</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="gig-min-bid" class="form-label">Minimum Bid (LSK)</label>
+                            <input type="number" id="gig-min-bid" class="form-input" placeholder="e.g. 0.05" step="0.01" min="0.01" required>
+                            <div class="form-note">Set a reasonable minimum bid to attract potential buyers.</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="gig-delivery-time" class="form-label">Delivery Time</label>
+                            <select id="gig-delivery-time" class="form-select" required>
+                                <option value="">Select delivery time</option>
+                                <option value="1">1 Day</option>
+                                <option value="2">2 Days</option>
+                                <option value="3">3 Days</option>
+                                <option value="5">5 Days</option>
+                                <option value="7">7 Days</option>
+                                <option value="14">14 Days</option>
+                                <option value="30">30 Days</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="create-auction-btn">Create Auction</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div>
+                    <div class="footer-logo">SkillSwap</div>
+                    <p class="footer-description">A decentralized marketplace for freelance services where users can bid on skills they need.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/skillswap" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://twitter.com/skillswap" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com/company/skillswap" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="auctions.html">Live Auctions</a></li>
+                        <li><a href="post-gig.html">Post a Gig</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@skillswap.com">info@skillswap.com</a></li>
+                        <li><a href="tel:+2348061538332">+234 806 153 8332</a></li>
+                        <li><a href="https://explorer.lisk.com/contract/LISK_DEPLOYED_CONTRACT_ADDRESS" target="_blank">Smart Contract</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Best Nwachinemere. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Wallet Modal -->
+    <div class="modal" id="wallet-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Connect Wallet</h3>
+                <button class="modal-close" id="wallet-modal-close">&times;</button>
+            </div>
+            <p>Choose a wallet to connect to SkillSwap:</p>
+            <div class="wallet-options">
+                <div class="wallet-option" data-wallet="lisk">
+                    <img src="assets/images/lisk.png" alt="LISK Wallet" class="wallet-icon">
+                    <span class="wallet-name">LISK Wallet</span>
+                </div>
+                <div class="wallet-option" data-wallet="metamask">
+                    <img src="assets/images/metamask.png" alt="MetaMask" class="wallet-icon">
+                    <span class="wallet-name">MetaMask</span>
+                </div>
+                <div class="wallet-option" data-wallet="walletconnect">
+                    <img src="assets/images/walletconnect.png" alt="WalletConnect" class="wallet-icon">
+                    <span class="wallet-name">WalletConnect</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <div class="notification-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="notification-message">
+            <div class="notification-title">Success!</div>
+            <div class="notification-description">Your action was completed successfully.</div>
+        </div>
+        <button class="notification-close" id="notification-close">&times;</button>
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle" id="dark-mode-toggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/web3.js"></script>
+    <script src="js/contract.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Post Gig Form Handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const postGigForm = document.getElementById('post-gig-form');
+            const createAuctionBtn = document.getElementById('create-auction-btn');
+            
+            if (postGigForm) {
+                postGigForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    if (!isConnected) {
+                        walletModal.classList.add('active');
+                        return;
+                    }
+                    
+                    const title = document.getElementById('gig-title').value;
+                    const description = document.getElementById('gig-description').value;
+                    const category = document.getElementById('gig-category').value;
+                    const duration = document.getElementById('gig-duration').value;
+                    const minBid = document.getElementById('gig-min-bid').value;
+                    const deliveryTime = document.getElementById('gig-delivery-time').value;
+                    
+                    // Format skill description with title, description, and category
+                    const skillDescription = `${title}|${description}|${category}`;
+                    
+                    createAuctionBtn.disabled = true;
+                    createAuctionBtn.textContent = 'Creating...';
+                    
+                    const result = await window.contractUtils.createAuction(
+                        skillDescription,
+                        minBid,
+                        duration,
+                        currentAccount
+                    );
+                    
+                    if (result.success) {
+                        window.utils.showNotification(
+                            'success',
+                            'Auction Created',
+                            'Your gig has been successfully listed for auction!'
+                        );
+                        
+                        // Reset form
+                        postGigForm.reset();
+                        
+                        // Redirect to dashboard after a delay
+                        setTimeout(() => {
+                            window.location.href = 'dashboard.html';
+                        }, 2000);
+                    } else {
+                        window.utils.showNotification(
+                            'error',
+                            'Creation Failed',
+                            result.error
+                        );
+                    }
+                    
+                    createAuctionBtn.disabled = false;
+                    createAuctionBtn.textContent = 'Create Auction';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

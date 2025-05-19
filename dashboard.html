@@ -1,0 +1,558 @@
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/web3.js"></script>
+<script src="js/contract.js"></script>
+<script src="js/main.js"></script>
+<script>
+    // Dashboard functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Dashboard Tab Switching
+        const dashboardTabs = document.querySelectorAll('.dashboard-tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        dashboardTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                dashboardTabs.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Hide all tab contents
+                tabContents.forEach(content => {
+                    content.style.display = 'none';
+                });
+                
+                // Show the selected tab content
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(`${tabId}-content`).style.display = 'block';
+            });
+        });
+        
+        // Load dashboard data if wallet is connected
+        if (isConnected) {
+            loadDashboardData();
+        } else {
+            // Show connect wallet message in all tables
+            showConnectWalletMessage();
+        }
+
+        // Add event listeners for settle and payout buttons
+        setupEventListeners();
+    });
+    
+    // Show connect wallet message in all tables
+    function showConnectWalletMessage() {
+        const tableIds = ['my-gigs-table', 'my-bids-table', 'won-auctions-table', 'payout-history-table'];
+        const message = 'Connect your wallet to view your data';
+        
+        tableIds.forEach(id => {
+            const tableBody = document.getElementById(id);
+            if (tableBody) {
+                const colSpan = id === 'won-auctions-table' || id === 'payout-history-table' ? 5 : 6;
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="${colSpan}" style="text-align: center;">
+                            ${message}
+                            <div style="margin-top: 10px;">
+                                <button class="btn btn-primary connect-wallet-table-btn">Connect Wallet</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }
+        });
+        
+        // Add event listeners to the connect wallet buttons in tables
+        document.querySelectorAll('.connect-wallet-table-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Show wallet modal
+                const walletModal = document.getElementById('wallet-modal');
+                if (walletModal) {
+                    walletModal.classList.add('active');
+                }
+            });
+        });
+        
+        // Set earnings to zero
+        document.getElementById('total-earnings').textContent = '0.00 LSK';
+        document.getElementById('pending-payouts').textContent = '0.00 LSK';
+        document.getElementById('completed-gigs').textContent = '0';
+    }
+    
+    // Set up event listeners for dynamic buttons
+    function setupEventListeners() {
+        // Use event delegation for dynamically created buttons
+        document.addEventListener('click', function(event) {
+            // Settle auction button
+            if (event.target.classList.contains('settle-btn')) {
+                handleSettleAuction(event.target);
+            }
+            
+            // Payout button
+            if (event.target.classList.contains('payout-btn')) {
+                handlePayout(event.target);
+            }
+            
+            // Place bid button
+            if (event.target.classList.contains('place-bid-btn')) {
+                handlePlaceBid(event.target);
+            }
+        });
+    }
+    
+    // Handle settle auction
+    async function handleSettleAuction(button) {
+        if (!isConnected) {
+            window.utils.showNotification('warning', 'Wallet Required', 'Please connect your wallet first.');
+            return;
+        }
+        
+        const auctionId = button.getAttribute('data-id');
+        
+        // Disable button and show loading state
+        button.disabled = true;
+        const originalText = button.textContent;
+        button.innerHTML = '<div class="connecting-spinner"></div> Settling...';
+        
+        try {
+            const result = await window.contractUtils.settleAuction(auctionId, currentAccount);
+            
+            if (result.success) {
+                window.utils.showNotification(
+                    'success',
+                    'Auction Settled',
+                    'The auction has been successfully settled.'
+                );
+                
+                // Reload dashboard data after a short delay
+                setTimeout(loadDashboardData, 2000);
+            } else {
+                window.utils.showNotification('error', 'Settlement Failed', result.error);
+                
+                // Reset button
+                button.disabled = false;
+                button.textContent = originalText;
+            }
+        } catch (error) {
+            console.error('Error settling auction:', error);
+            window.utils.showNotification(
+                'error',
+                'Error',
+                'An error occurred while settling the auction. Please try again.'
+            );
+            
+            // Reset button
+            button.disabled = false;
+            button.textContent = originalText;
+        }
+    }
+    
+    // Handle payout
+    async function handlePayout(button) {
+        if (!isConnected) {
+            window.utils.showNotification('warning', 'Wallet Required', 'Please connect your wallet first.');
+            return;
+        }
+        
+        const auctionId = button.getAttribute('data-id');
+        
+        // Disable button and show loading state
+        button.disabled = true;
+        const originalText = button.textContent;
+        button.innerHTML = '<div class="connecting-spinner"></div> Processing...';
+        
+        try {
+            const result = await window.contractUtils.payout(auctionId, currentAccount);
+            
+            if (result.success) {
+                window.utils.showNotification(
+                    'success',
+                    'Payout Processed',
+                    'Your payout has been successfully processed.'
+                );
+                
+                // Reload dashboard data after a short delay
+                setTimeout(loadDashboardData, 2000);
+            } else {
+                window.utils.showNotification('error', 'Payout Failed', result.error);
+                
+                // Reset button
+                button.disabled = false;
+                button.textContent = originalText;
+            }
+        } catch (error) {
+            console.error('Error processing payout:', error);
+            window.utils.showNotification(
+                'error',
+                'Error',
+                'An error occurred while processing the payout. Please try again.'
+            );
+            
+            // Reset button
+            button.disabled = false;
+            button.textContent = originalText;
+        }
+    }
+    
+    // Handle place bid
+    async function handlePlaceBid(button) {
+        if (!isConnected) {
+            window.utils.showNotification('warning', 'Wallet Required', 'Please connect your wallet first.');
+            return;
+        }
+        
+        const auctionId = button.getAttribute('data-id');
+        const minBid = parseFloat(button.getAttribute('data-min'));
+        
+        const bidAmount = prompt(
+            `Enter bid amount (min ${window.utils.formatLsk(minBid)} LSK):`,
+            window.utils.formatLsk(minBid * 1.1)
+        );
+        
+        if (bidAmount === null) return;
+        
+        if (parseFloat(bidAmount) <= minBid) {
+            window.utils.showNotification(
+                'error',
+                'Bid Too Low',
+                `Your bid must be higher than ${window.utils.formatLsk(minBid)} LSK.`
+            );
+            return;
+        }
+        
+        // Disable button and show loading state
+        button.disabled = true;
+        const originalText = button.textContent;
+        button.innerHTML = '<div class="connecting-spinner"></div> Bidding...';
+        
+        try {
+            const result = await window.contractUtils.placeBid(auctionId, bidAmount, currentAccount);
+            
+            if (result.success) {
+                window.utils.showNotification(
+                    'success',
+                    'Bid Placed',
+                    `Your bid of ${bidAmount} LSK has been placed successfully.`
+                );
+                
+                // Reload dashboard data after a short delay
+                setTimeout(loadDashboardData, 2000);
+            } else {
+                window.utils.showNotification('error', 'Bid Failed', result.error);
+                
+                // Reset button
+                button.disabled = false;
+                button.textContent = originalText;
+            }
+        } catch (error) {
+            console.error('Error placing bid:', error);
+            window.utils.showNotification(
+                'error',
+                'Error',
+                'An error occurred while placing your bid. Please try again.'
+            );
+            
+            // Reset button
+            button.disabled = false;
+            button.textContent = originalText;
+        }
+    }
+    
+    // Load dashboard data
+    async function loadDashboardData() {
+        // Show loading indicators
+        showLoadingState();
+        
+        try {
+            const result = await window.contractUtils.getAuctions();
+            
+            if (result.success) {
+                const auctions = result.auctions;
+                
+                // Filter auctions for My Gigs tab (where user is seller)
+                const myGigs = auctions.filter(auction => 
+                    auction.seller.toLowerCase() === currentAccount.toLowerCase()
+                );
+                
+                // Filter auctions for My Bids tab (where user is highest bidder)
+                const myBids = auctions.filter(auction => 
+                    auction.highestBidder.toLowerCase() === currentAccount.toLowerCase() && 
+                    !auction.settled
+                );
+                
+                // Filter auctions for Won Auctions tab (where user is highest bidder and auction is settled)
+                const wonAuctions = auctions.filter(auction => 
+                    auction.highestBidder.toLowerCase() === currentAccount.toLowerCase() && 
+                    auction.settled
+                );
+                
+                // Calculate earnings
+                let totalEarnings = 0;
+                let pendingPayouts = 0;
+                let completedGigs = 0;
+                
+                myGigs.forEach(gig => {
+                    if (gig.settled && gig.paidOut) {
+                        totalEarnings += parseFloat(gig.highestBid);
+                        completedGigs++;
+                    } else if (gig.settled && !gig.paidOut) {
+                        pendingPayouts += parseFloat(gig.highestBid);
+                    }
+                });
+                
+                // Update UI
+                updateMyGigsTable(myGigs);
+                updateMyBidsTable(myBids);
+                updateWonAuctionsTable(wonAuctions);
+                updateEarningsTab(totalEarnings, pendingPayouts, completedGigs);
+            } else {
+                console.error('Failed to load auctions:', result.error);
+                window.utils.showNotification('error', 'Data Loading Failed', result.error);
+                showErrorState();
+            }
+        } catch (error) {
+            console.error('Error loading dashboard data:', error);
+            window.utils.showNotification(
+                'error',
+                'Error',
+                'An error occurred while loading your dashboard data.'
+            );
+            showErrorState();
+        }
+    }
+    
+    // Show loading state
+    function showLoadingState() {
+        const tableIds = ['my-gigs-table', 'my-bids-table', 'won-auctions-table', 'payout-history-table'];
+        
+        tableIds.forEach(id => {
+            const tableBody = document.getElementById(id);
+            if (tableBody) {
+                const colSpan = id === 'won-auctions-table' || id === 'payout-history-table' ? 5 : 6;
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="${colSpan}" style="text-align: center; padding: 2rem;">
+                            <div class="connecting-spinner" style="margin: 0 auto; width: 30px; height: 30px;"></div>
+                            <p style="margin-top: 1rem;">Loading data...</p>
+                        </td>
+                    </tr>
+                `;
+            }
+        });
+    }
+    
+    // Show error state
+    function showErrorState() {
+        const tableIds = ['my-gigs-table', 'my-bids-table', 'won-auctions-table', 'payout-history-table'];
+        
+        tableIds.forEach(id => {
+            const tableBody = document.getElementById(id);
+            if (tableBody) {
+                const colSpan = id === 'won-auctions-table' || id === 'payout-history-table' ? 5 : 6;
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="${colSpan}" style="text-align: center; padding: 2rem;">
+                            <div style="color: var(--error); margin-bottom: 1rem;">
+                                <i class="fas fa-exclamation-circle" style="font-size: 2rem;"></i>
+                            </div>
+                            <p>Failed to load data. Please try again.</p>
+                            <button class="btn btn-primary retry-btn" style="margin-top: 1rem;">Retry</button>
+                        </td>
+                    </tr>
+                `;
+            }
+        });
+        
+        // Add event listeners to retry buttons
+        document.querySelectorAll('.retry-btn').forEach(btn => {
+            btn.addEventListener('click', loadDashboardData);
+        });
+    }
+    
+    // Update My Gigs table
+    function updateMyGigsTable(myGigs) {
+        const tableBody = document.getElementById('my-gigs-table');
+        
+        if (!tableBody) return;
+        
+        if (myGigs.length === 0) {
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="6" style="text-align: center;">
+                        <p>You haven't posted any gigs yet</p>
+                        <a href="post-gig.html" class="btn btn-primary" style="margin-top: 1rem;">Post a Gig</a>
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+        
+        tableBody.innerHTML = '';
+        
+        myGigs.forEach(gig => {
+            const { title } = window.utils.parseSkillDescription(gig.skillDescription);
+            const timeLeft = window.utils.getTimeLeft(gig.endTime);
+            let status = '';
+            let actions = '';
+            
+            if (gig.settled && gig.paidOut) {
+                status = '<span class="status status-delivered">Completed</span>';
+                actions = `<button class="btn btn-secondary" style="padding: 0.3rem 0.8rem;" disabled>Paid Out</button>`;
+            } else if (gig.settled && !gig.paidOut) {
+                status = '<span class="status status-won">Ready for Payout</span>';
+                actions = `<button class="btn btn-primary payout-btn" style="padding: 0.3rem 0.8rem;" data-id="${gig.id}">Claim Payout</button>`;
+            } else if (timeLeft === 'Ended') {
+                status = '<span class="status" style="background: var(--warning-light); color: var(--warning);">Ended</span>';
+                actions = `<button class="btn btn-primary settle-btn" style="padding: 0.3rem 0.8rem;" data-id="${gig.id}">Settle Auction</button>`;
+            } else {
+                status = '<span class="status status-active">Active</span>';
+                actions = `<button class="btn btn-secondary" style="padding: 0.3rem 0.8rem;" disabled>In Progress</button>`;
+            }
+            
+            tableBody.innerHTML += `
+                <tr>
+                    <td>${title}</td>
+                    <td>${window.utils.formatLsk(gig.minBid)} LSK</td>
+                    <td>${window.utils.formatLsk(gig.highestBid)} LSK</td>
+                    <td>${timeLeft}</td>
+                    <td>${status}</td>
+                    <td>${actions}</td>
+                </tr>
+            `;
+        });
+    }
+    
+    // Update My Bids table
+    function updateMyBidsTable(myBids) {
+        const tableBody = document.getElementById('my-bids-table');
+        
+        if (!tableBody) return;
+        
+        if (myBids.length === 0) {
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="6" style="text-align: center;">
+                        <p>You haven't placed any bids yet</p>
+                        <a href="auctions.html" class="btn btn-primary" style="margin-top: 1rem;">Browse Auctions</a>
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+        
+        tableBody.innerHTML = '';
+        
+        myBids.forEach(bid => {
+            const { title } = window.utils.parseSkillDescription(bid.skillDescription);
+            const timeLeft = window.utils.getTimeLeft(bid.endTime);
+            let status = '';
+            let actions = '';
+            
+            if (timeLeft === 'Ended') {
+                status = '<span class="status" style="background: var(--warning-light); color: var(--warning);">Ended</span>';
+                actions = `<button class="btn btn-secondary" style="padding: 0.3rem 0.8rem;" disabled>Waiting for Settlement</button>`;
+            } else {
+                status = '<span class="status status-active">Active</span>';
+                actions = `
+                    <button class="btn btn-primary place-bid-btn" style="padding: 0.3rem 0.8rem;" data-id="${bid.id}" data-min="${bid.highestBid}">Increase Bid</button>
+                `;
+            }
+            
+            tableBody.innerHTML += `
+                <tr>
+                    <td>${title}</td>
+                    <td>${window.utils.formatLsk(bid.highestBid)} LSK</td>
+                    <td>${window.utils.formatLsk(bid.highestBid)} LSK</td>
+                    <td>${timeLeft}</td>
+                    <td>${status}</td>
+                    <td>${actions}</td>
+                </tr>
+            `;
+        });
+    }
+    
+    // Update Won Auctions table
+    function updateWonAuctionsTable(wonAuctions) {
+        const tableBody = document.getElementById('won-auctions-table');
+        
+        if (!tableBody) return;
+        
+        if (wonAuctions.length === 0) {
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="5" style="text-align: center;">
+                        <p>You haven't won any auctions yet</p>
+                        <a href="auctions.html" class="btn btn-primary" style="margin-top: 1rem;">Browse Auctions</a>
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+        
+        tableBody.innerHTML = '';
+        
+        wonAuctions.forEach(auction => {
+            const { title } = window.utils.parseSkillDescription(auction.skillDescription);
+            let status = '';
+            let actions = '';
+            
+            if (auction.paidOut) {
+                status = '<span class="status status-delivered">Completed</span>';
+                actions = `<button class="btn btn-secondary" style="padding: 0.3rem 0.8rem;" disabled>Completed</button>`;
+            } else {
+                status = '<span class="status status-won">Won</span>';
+                actions = `<button class="btn btn-secondary" style="padding: 0.3rem 0.8rem;" disabled>Waiting for Delivery</button>`;
+            }
+            
+            tableBody.innerHTML += `
+                <tr>
+                    <td>${title}</td>
+                    <td>${window.utils.formatAddress(auction.seller)}</td>
+                    <td>${window.utils.formatLsk(auction.highestBid)} LSK</td>
+                    <td>${status}</td>
+                    <td>${actions}</td>
+                </tr>
+            `;
+        });
+    }
+    
+    // Update Earnings tab
+    function updateEarningsTab(totalEarnings, pendingPayouts, completedGigs) {
+        document.getElementById('total-earnings').textContent = `${window.utils.formatLsk(totalEarnings)} LSK`;
+        document.getElementById('pending-payouts').textContent = `${window.utils.formatLsk(pendingPayouts)} LSK`;
+        document.getElementById('completed-gigs').textContent = completedGigs;
+        
+        const payoutHistoryTable = document.getElementById('payout-history-table');
+        
+        if (!payoutHistoryTable) return;
+        
+        if (completedGigs === 0) {
+            payoutHistoryTable.innerHTML = `
+                <tr>
+                    <td colspan="5" style="text-align: center;">No payout history yet</td>
+                </tr>
+            `;
+            return;
+        }
+        
+        // For demo purposes, we'll show sample payout history
+        // In a real application, you would fetch this from the blockchain
+        payoutHistoryTable.innerHTML = `
+            <tr>
+                <td>Professional Logo Design</td>
+                <td>${window.utils.formatAddress('0x1234567890123456789012345678901234567890')}</td>
+                <td>0.0800 LSK</td>
+                <td>${new Date().toLocaleDateString()}</td>
+                <td><a href="#" class="transaction-link">View Transaction</a></td>
+            </tr>
+        `;
+    }
+    
+    // Helper function to format LSK value
+    function formatLsk(value) {
+        if (!value) return "0.0000";
+        return parseFloat(value).toFixed(4);
+    }
+</script>
